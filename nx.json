@@ -1,0 +1,24 @@
+{
+  "npmScope": "rv",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "dashboard-e2e": {
+      "tags": []
+    },
+    "dashboard": {
+      "tags": []
+    },
+    "material": {
+      "tags": []
+    },
+    "core-data": {
+      "tags": []
+    }
+  }
+}

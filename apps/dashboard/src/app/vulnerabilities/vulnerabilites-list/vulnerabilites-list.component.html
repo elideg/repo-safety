@@ -1,0 +1,20 @@
+<mat-card class="w-100 mt-5">
+  <mat-card-header>
+    <mat-card-title>
+      Repo Vulnerabilities {{ type | titlecase }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+
+    <mat-list>
+      <mat-list-item (click)="fix(vul)" *ngFor="let vul of vulnerabilities" class="mat-list-option">
+
+        <h4 mat-line>{{ vul.name }}</h4>
+
+        <p mat-line>Number of vulnerablilities {{ vul.vulnerabilityAlerts.totalCount }}</p>
+
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
