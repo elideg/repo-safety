@@ -9,6 +9,8 @@ import { VulnerabilitiesComponent } from './vulnerabilities/vulnerabilities.comp
 import { VulnerabilitesListComponent } from './vulnerabilities/vulnerabilites-list/vulnerabilites-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ApolloModule } from 'apollo-angular'
+import { HttpLinkModule } from 'apollo-angular-link-http'
 
 @NgModule({
   declarations: [AppComponent, VulnerabilitiesComponent, VulnerabilitesListComponent],
@@ -17,6 +19,8 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     CoreDataModule,
     HttpClientModule,
+    HttpLinkModule,
+    ApolloModule,
     BrowserAnimationsModule,
     FormsModule
   ],
