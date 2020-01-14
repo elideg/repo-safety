@@ -15,19 +15,19 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" closed class="app-sidenav">
+  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
     <nav>
-      <a mat-button class="nav-link">
+      <a mat-button class="nav-link" *ngFor="let link of links" [routerLink]="link.path" routerLinkActive="active">
         <mat-icon>
-        <!-- LINK ICON -->
+        {{ link.icon }}
         </mat-icon>
-        <!-- LINK LABEL -->
+        {{ link.title }}
       </a>
     </nav>
   </mat-sidenav>
 
   <div class="app-content">
-    <rv-vulnerabilities></rv-vulnerabilities>
+    <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>
 

@@ -8,13 +8,15 @@
   <mat-card-content>
 
     <mat-list>
-      <mat-list-item (click)="fix(vul)" *ngFor="let vul of vulnerabilities" class="mat-list-option">
+      <mat-list-item (click)="fix(vulnerability)" *ngFor="let vulnerability of vuls" class="mat-list-option">
 
-        <h4 mat-line>{{ vul.name }}</h4>
+        <h4 mat-line>{{ vulnerability.name }}</h4>
 
-        <p mat-line>Number of vulnerablilities {{ vul.vulnerabilityAlerts.totalCount }}</p>
+        <p mat-line>Number of vulnerablilities {{ vulnerability.vulnerabilityAlerts.totalCount }}</p>
 
       </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>
+<button mat-raised-button color="primary" (click)="back()">back</button>
+<button mat-raised-button color="primary" (click)="next()">next</button>

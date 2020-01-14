@@ -1,4 +1,3 @@
-import { VulnerabilityService } from '@rv/core-data';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'dashboard';
 
-  constructor() {}
+  links = [
+    { path: '/about', icon: 'help', title: 'About'},
+    { path: '/vul', icon: 'feedback', title: 'Vulnerabilities'}
+  ]
 
-  ngOnInit() {
-  }
 }

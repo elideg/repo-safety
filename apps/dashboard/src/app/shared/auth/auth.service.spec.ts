@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VulnerabilityService } from './vulnerability.service';
+import { AuthService } from '../../../../../../libs/core-data/src/lib/auth/auth.service';
 
-describe('VulnerabilityService', () => {
+describe('AuthService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: VulnerabilityService = TestBed.get(VulnerabilityService);
+    const service: AuthService = TestBed.get(AuthService);
     expect(service).toBeTruthy();
   });
 });

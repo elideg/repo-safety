@@ -1,13 +1,22 @@
 <div class="container d-flex">
   <div class="col-6">
-    <rv-vulnerabilites-list [vulnerabilities]="(repositories$  | async)?.allrepos" [type]="'all repos'"
-      (fixed)="selectVul($event)">
+    <rv-vulnerabilites-list [vulnerabilities]="(repositories$  | async)" [type]="'all repos'"
+      (fixed)="selectVulnerability($event)">
     </rv-vulnerabilites-list>
   </div>
 
   <div class="col-6">
-    <rv-vulnerabilites-list [vulnerabilities]="(repositories$  | async)?.notfixed" [type]="'not fixed'"
-      (fixed)="selectVul($event)">
+    <rv-vulnerabilites-list [vulnerabilities]="(withVulnerabilities | async)" [type]="'not fixed'"
+      (fixed)="selectVulnerability($event)">
     </rv-vulnerabilites-list>
   </div>
+
+  <div class="col-5">
+    <form (submit)="setToken()">
+      <mat-form-field>
+        <input matInput [(ngModel)]="token" name="token" placeholder="Personal Token">
+      </mat-form-field>
+    </form>
+  </div>
+
 </div>
