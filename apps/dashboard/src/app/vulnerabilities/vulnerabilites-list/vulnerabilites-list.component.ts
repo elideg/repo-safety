@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Vulnerability } from '@rv/core-data';
+import { Repository } from '@rv/core-data';
 
 @Component({
   selector: 'rv-vulnerabilites-list',
@@ -8,7 +8,7 @@ import { Vulnerability } from '@rv/core-data';
 })
 export class VulnerabilitesListComponent {
 
-  @Input() vulnerabilities: Vulnerability;
+  @Input() vulnerabilities: Repository;
   @Input() type: string;
 
   @Output() fixed = new EventEmitter;
