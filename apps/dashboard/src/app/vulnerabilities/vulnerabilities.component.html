@@ -6,8 +6,16 @@
   </div>
 
   <div class="col-6">
-    <rv-vulnerabilites-list [vulnerabilities]="(repositories$  | async)?.notfixed" [type]="'not fixed'"
+    <rv-vulnerabilites-list [vulnerabilities]="(repositories$ | async)?.notfixed" [type]="'not fixed'"
       (fixed)="selectVul($event)">
     </rv-vulnerabilites-list>
+  </div>
+
+  <div class="col-5">
+    <form (submit)="setToken()">
+      <mat-form-field>
+        <input matInput [(ngModel)]="token" name="token" placeholder="Personal Token">
+      </mat-form-field>
+    </form>
   </div>
 </div>

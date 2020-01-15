@@ -1,7 +1,7 @@
-import { VulnerabilityService, Vulnerability } from '@rv/core-data';
+import { GraphqlService, Repository, RepositoriesType } from '@rv/core-data';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AuthService } from '@rv/core-data';
 
 @Component({
   selector: 'rv-vulnerabilities',
@@ -9,16 +9,25 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./vulnerabilities.component.scss']
 })
 export class VulnerabilitiesComponent implements OnInit {
-  selectedVul: Vulnerability;
-  repositories$ = this.vulnerabilityService.all();
+  selectedVul: Repository;
+  repositories$: Observable<RepositoriesType> = this.graphqlService.all();
+  token = '';
 
-  constructor(private vulnerabilityService: VulnerabilityService) { }
+  constructor(
+    private graphqlService: GraphqlService,
+    private authService: AuthService
+  ) { }
 
-  selectVul(vulnerablility) {
+  ngOnInit() {
+  }
+
+  selectVul(vulnerablility: Repository) {
     window.open(vulnerablility.url);
   }
 
-  ngOnInit() {
+  setToken() {
+    this.authService.setToken(this.token);
+    this.repositories$ = this.graphqlService.all();
   }
 
 }

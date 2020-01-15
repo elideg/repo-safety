@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h4>How to View All One Hungry Mind Repo Vulnerabilities</h4>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <h4>To communicate with the <a href="https://developer.github.com/v4/explorer">GitHub GraphQL API</a> you'll need a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">OAuth Token</a>.</h4>
+        <h4>In order to match the functionality of the GitHub GraphQL API use the following scopes when creating your OAuth Token</h4>
+        <mat-list>
+            <mat-list-item>user</mat-list-item>
+            <mat-list-item>public_repo</mat-list-item>
+            <mat-list-item>repo</mat-list-item>
+            <mat-list-item>repo_deployment</mat-list-item>
+            <mat-list-item>repo:status</mat-list-item>
+            <mat-list-item>read:repo_hook</mat-list-item>
+            <mat-list-item>read:org</mat-list-item>
+            <mat-list-item>read:public_key</mat-list-item>
+            <mat-list-item>read:gpg_key</mat-list-item>
+        </mat-list>
+        <h4>Once you generate your Auth Token with the right scopes, Copy & Paste it inside the Auth Token Input Box</h4>
+        <h4>You will only be able to see number of Vulnerabilities If you have the right perms in the GitHub Repo your searching</h4>
+    </mat-card-content>
+</mat-card>
