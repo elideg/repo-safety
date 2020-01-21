@@ -10,7 +10,7 @@ export class AppComponent {
 
   links = [
     { path: '/about', icon: 'help', title: 'About'},
-    { path: '/vul', icon: 'feedback', title: 'Vulnerabilities'}
+    { path: '/', icon: 'feedback', title: 'Vulnerabilities'}
   ]
 
 }

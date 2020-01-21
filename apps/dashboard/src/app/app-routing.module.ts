@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     { path: 'about', component: AboutComponent},
-    { path: 'vul', component: VulnerabilitiesComponent},
+    { path: '', component: VulnerabilitiesComponent},
     // { path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 

@@ -7,9 +7,11 @@ import { Repository } from '@rv/core-data';
   styleUrls: ['./vulnerabilites-list.component.scss']
 })
 export class VulnerabilitesListComponent implements OnChanges {
-  paganation = [0, 5];
+  pageIndex = 0;
+  pageSize = 10;
+  lowValue = 0;
+  highValue = 10;
   vuls;
-  pageCount = 5;
 
   @Input() vulnerabilities: Repository[];
   @Input() type: string;
@@ -19,27 +21,25 @@ export class VulnerabilitesListComponent implements OnChanges {
   constructor() {
   }
 
-  ngOnChanges(): void {
-    if (this.vulnerabilities.length) {
-      this.vuls = this.vulnerabilities.slice(this.paganation[0], this.paganation[1]);
-      console.log(this.vuls)
-    }
-  }
-
-  next() {
-    this.paganation[0] = this.paganation[0] + this.pageCount;
-    this.paganation[1] = this.paganation[1] + this.pageCount;
-    this.vuls = this.vulnerabilities.slice(this.paganation[0], this.paganation[1]);
-  }
-
-  back() {
-    this.paganation[0] = this.paganation[0] - 5;
-    this.paganation[1] = this.paganation[1] - 5;
-    this.vuls = this.vulnerabilities.slice(this.paganation[0], this.paganation[1]);
+  ngOnChanges() {
+    this.vuls = this.vulnerabilities;
   }
 
 
   fix(vulnerability) {
     this.fixed.emit(vulnerability);
+  }
+
+  getPaginatorData(event){
+    console.log(event);
+    if(event.pageIndex === this.pageIndex + 1){
+        this.lowValue = this.lowValue + this.pageSize;
+        this.highValue =  this.highValue + this.pageSize;
+    }
+    else if(event.pageIndex === this.pageIndex - 1){
+      this.lowValue = this.lowValue - this.pageSize;
+      this.highValue =  this.highValue - this.pageSize;
+      }
+      this.pageIndex = event.pageIndex;
   }
 }
