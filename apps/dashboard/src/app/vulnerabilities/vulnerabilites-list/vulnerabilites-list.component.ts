@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Repository } from '@rv/core-data';
 
 @Component({
@@ -6,17 +6,40 @@ import { Repository } from '@rv/core-data';
   templateUrl: './vulnerabilites-list.component.html',
   styleUrls: ['./vulnerabilites-list.component.scss']
 })
-export class VulnerabilitesListComponent {
+export class VulnerabilitesListComponent implements OnChanges {
+  pageIndex = 0;
+  pageSize = 10;
+  lowValue = 0;
+  highValue = 10;
+  vuls;
 
-  @Input() vulnerabilities: Repository;
+  @Input() vulnerabilities: Repository[];
   @Input() type: string;
 
   @Output() fixed = new EventEmitter;
 
-  constructor() { }
+  constructor() {
+  }
+
+  ngOnChanges() {
+    this.vuls = this.vulnerabilities;
+  }
 
 
-  fix(vul) {
-    this.fixed.emit(vul);
+  fix(vulnerability) {
+    this.fixed.emit(vulnerability);
+  }
+
+  getPaginatorData(event){
+    console.log(event);
+    if(event.pageIndex === this.pageIndex + 1){
+        this.lowValue = this.lowValue + this.pageSize;
+        this.highValue =  this.highValue + this.pageSize;
+    }
+    else if(event.pageIndex === this.pageIndex - 1){
+      this.lowValue = this.lowValue - this.pageSize;
+      this.highValue =  this.highValue - this.pageSize;
+      }
+      this.pageIndex = event.pageIndex;
   }
 }

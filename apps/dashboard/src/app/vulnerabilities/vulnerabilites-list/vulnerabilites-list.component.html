@@ -8,13 +8,18 @@
   <mat-card-content>
 
     <mat-list>
-      <mat-list-item (click)="fix(vul)" *ngFor="let vul of vulnerabilities" class="mat-list-option">
+      <mat-list-item (click)="fix(vulnerability)" *ngFor="let vulnerability of vuls | slice: lowValue : highValue" class="mat-list-option">
 
-        <h4 mat-line>{{ vul.name }}</h4>
+        <h4 mat-line>{{ vulnerability.name }}</h4>
 
-        <p mat-line>Number of vulnerablilities {{ vul.vulnerabilityAlerts.totalCount }}</p>
+        <p mat-line>Number of vulnerablilities {{ vulnerability.vulnerabilityAlerts.totalCount }}</p>
 
       </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>
+
+<mat-paginator [length]="vuls.length"
+              [pageSize]="pageSize"
+              (page)="pageEvent = getPaginatorData($event)">
+</mat-paginator>

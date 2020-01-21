@@ -1,7 +1,8 @@
-import { GraphqlService, Repository, RepositoriesType } from '@rv/core-data';
+import { VulnerabilitiesFacade } from '@rv/core-state';
+import { GraphqlService, Repository, RepositoriesType, AuthService } from '@rv/core-data';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '@rv/core-data';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'rv-vulnerabilities',
@@ -10,24 +11,26 @@ import { AuthService } from '@rv/core-data';
 })
 export class VulnerabilitiesComponent implements OnInit {
   selectedVul: Repository;
-  repositories$: Observable<RepositoriesType> = this.graphqlService.all();
+  repositories$: Observable<Repository[]> = this.vulnerabilitiesFacade.allVulnerabilities$;
+  withVulnerabilities: Observable<Repository[]> = this.vulnerabilitiesFacade.allWithVulnerabilities$;
   token = '';
 
   constructor(
     private graphqlService: GraphqlService,
-    private authService: AuthService
+    private authService: AuthService,
+    private vulnerabilitiesFacade: VulnerabilitiesFacade
   ) { }
 
   ngOnInit() {
+    this.vulnerabilitiesFacade.loadVulnerabilities();
   }
 
-  selectVul(vulnerablility: Repository) {
+  selectVulnerability(vulnerablility: Repository) {
     window.open(vulnerablility.url);
   }
 
   setToken() {
     this.authService.setToken(this.token);
-    this.repositories$ = this.graphqlService.all();
   }
 
 }

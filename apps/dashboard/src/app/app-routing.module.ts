@@ -1,12 +1,12 @@
-import { AboutModule } from './about/about.module';
+import { VulnerabilitiesComponent } from './vulnerabilities/vulnerabilities.component';
+import { AboutComponent } from './about/about.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { VulnerabilitiesModule } from './vulnerabilities/vulnerabilities.module';
 
 const routes: Routes = [
-    { path: 'about', loadChildren: () =>  AboutModule},
-    { path: 'vul', loadChildren: () => VulnerabilitiesModule},
-    { path: '**', pathMatch: 'full', redirectTo: ''}
+    { path: 'about', component: AboutComponent},
+    { path: '', component: VulnerabilitiesComponent},
+    // { path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 
 @NgModule({
